@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RugPull Coin (RUG)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0e0e0e;
+      color: #fff;
+      text-align: center;
+    }
+    header {
+      padding: 2rem;
+    }
+header img {
+  width: 150px;
+  border-radius: 12px;
+  background-color: transparent;
+  display: inline-block;
+    }
+    h1 {
+      margin: 1rem 0 0.5rem;
+      font-size: 2.5rem;
+    }
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+    section {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #1c1c1c;
+      border-radius: 12px;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background: #ff3860;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #e6274b;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    a {
+      color: #ff3860;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="RugPull Coin Logo" />
+    <h1>RugPull Coin (RUG)</h1>
+    <p class="subtitle">Rug you before they rug you.</p>
+  </header>
+
+  <section>
+    <h2>What is RUG?</h2>
+    <p>
+      RugPull Coin is a self-burning meme token built to expose scams — by being one that transparently can't be rugged. 
+      Every transfer burns 1% of the amount. The supply only goes down, the memes go up.
+    </p>
+  </section>
+
+  <section>
+    <h2>Token Info</h2>
+    <p><strong>Symbol:</strong> RUG</p>
+    <p><strong>Network:</strong> Ethereum Mainnet</p>
+    <p><strong>Contract Address:</strong><br />
+      <code>0xD89B32efed0a68012a173cA8c2Dc4239aBDE509c</code></p>
+    <p><a href="https://etherscan.io/token/0xD89B32efed0a68012a173cA8c2Dc4239aBDE509c" target="_blank">View on Etherscan</a></p>
+    <button onclick="addTokenToMetaMask()">➕ Add to MetaMask</button>
+  </section>
+
+  <section>
+    <h2>Follow us</h2>
+    <p>X: <em>@rugpullcoin</em> (coming soon)<br />
+       Telegram: <em>t.me/rugpullcoin</em> (coming soon)</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 RugPull Coin. All rugs reserved 🧹</p>
+  </footer>
+
+  <script>
+    async function addTokenToMetaMask() {
+      try {
+        const wasAdded = await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: '0xD89B32efed0a68012a173cA8c2Dc4239aBDE509c',
+              symbol: 'RUG',
+              decimals: 18,
+              image: 'https://raw.githubusercontent.com/rugpulldev/token-assets/main/logo.png',
+            },
+          },
+        });
+
+        if (wasAdded) {
+          alert('RUG successfully added to MetaMask!');
+        } else {
+          alert('Token addition canceled.');
+        }
+      } catch (error) {
+        console.error(error);
+        alert('Something went wrong.');
+      }
+    }
+  </script>
+</body>
+</html>
